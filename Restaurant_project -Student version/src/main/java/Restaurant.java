@@ -68,6 +68,23 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+    public int getBill(List<String> order, List<Item> menu)
+    {
+        //List<Item> menu = getMenu();
+        int value = 0;
+        for(String dish:order)
+        {
+            for(Item i:menu)
+            {
+                if(dish==i.getName()) {
+                    value += i.price;
+                    break;
+                }
+            }
+        }
+        return value;
+    }
+
 
 
 }
