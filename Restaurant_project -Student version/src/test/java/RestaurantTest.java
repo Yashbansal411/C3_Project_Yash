@@ -87,6 +87,21 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //<<<<<<<<<<<<<<<<<<<<<<<CHECK_BILL>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void check_total_value_of_order()
+    {
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        List<String>item = new ArrayList<String>();
+        restaurant.addToMenu("Sweet corn soup",119);
+        item.add("Sweet corn soup");
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        item.add("Vegetable lasagne");
+        List<Item> menu = restaurant.getMenu();
+        int getValue = restaurant.getBill(item,menu);
+        assertEquals(388,getValue);
+    }
 
 
 }
